@@ -1,0 +1,82 @@
+import random
+g = 'El ganador es: '
+jugador = 0
+pc_jugador = 0
+count = (1)
+usuario = input('¿Cuál es tu nombre jugador? \n').upper()
+
+
+
+while True:
+  options = ('piedra', 'papel', 'tijera')
+  computer_option = random.choice(options)
+  #
+  usuario = usuario
+  pc = 'Maquina furiosa'.upper()
+
+  vidas_jugador = 3 - pc_jugador
+  vidas_pc = 3 - jugador
+  
+  
+
+  print('❤ ' * 15)
+  print(f' {usuario}: tiene {vidas_jugador} vidas ')
+  print(f' {pc}: tiene {vidas_pc} vidas ')
+  print('🎉 '* 10)
+  
+  
+  if jugador == 0 and pc_jugador == 0:
+    option_user = input("Vamos a jugar, escoge una opción: piedra, papel o tijera \n ").lower()
+  else:
+    option_user = input(f" {usuario} tienes {vidas_jugador} vidas, continúa jugando; escoge una opción: piedra, papel o tijera \n ").lower()
+  
+  if option_user not in options:
+    print('haz seleccionado una opción invalida, vuelve a internalo')
+  
+  print('-' * 30)
+  print(f'Ronda: {count} ')
+  print('-' * 30)
+  if option_user == computer_option:
+    print(f'Empate, tanto: {usuario} como: {pc} seleccionaron {option_user.upper()}')
+    jugador += 0
+    pc_jugador += 0
+    count += 1
+  
+  elif option_user == options[0]:
+    if computer_option == options[2]:
+      print(f"{g} {usuario}; \n {option_user.upper()} mata a: {computer_option.upper()}")
+      jugador += 1
+      count += 1
+    else:
+      print(f"{g} {pc}; \n {computer_option.upper()} mata a: {option_user.upper()}")
+      pc_jugador += 1
+      count += 1
+      
+  elif option_user == options[1]:
+    if computer_option == options[0]:
+      print(f"{g} {usuario}; \n {option_user.upper()} mata a: {computer_option.upper()}")
+      jugador += 1
+      count += 1
+    else:
+      print(f"{g} {pc}; \n {computer_option.upper()} mata a: {option_user.upper()}")
+      pc_jugador += 1
+      count += 1
+  
+  elif option_user == options[2]:
+    if computer_option == options[1]:
+      print(f"{g} {usuario}; \n {option_user.upper()} mata a: {computer_option.upper()}")
+      jugador += 1
+      count += 1
+    else:
+      print(f"{g} {pc}; \n {computer_option.upper()} mata a: {option_user.upper()}")
+      pc_jugador += 1
+      count += 1
+  if jugador == 3  :
+    print('🏆'*20)
+    print(f'Felicitaciones: {g.lower()} {usuario} ')
+    break
+
+  if pc_jugador == 3:
+    print('🏆'*20)
+    print(f'Haz perdido contra {pc} {g.lower()} ')
+    break
